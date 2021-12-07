@@ -29,16 +29,10 @@ class MainActivity : AppCompatActivity() {
         btnReset.setOnClickListener {
             onClick(it)
         }
-
-        if (savedInstanceState != null) {
-            count = savedInstanceState.getInt(KEY_COUNT, 0)
-        }
     }
-
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-
         outState.putInt(KEY_COUNT, count)
     }
 
