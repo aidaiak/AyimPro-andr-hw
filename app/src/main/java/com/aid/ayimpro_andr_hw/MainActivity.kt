@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 
+// hw-9: не выполнено основное условие. При перевороте экрана значение не сохранится
 class MainActivity : AppCompatActivity() {
 
     private lateinit var txtCount: TextView
