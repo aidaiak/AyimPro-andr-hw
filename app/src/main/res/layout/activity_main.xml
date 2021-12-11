@@ -50,12 +50,12 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:onClick="onClear"
+                android:onClick="onClear" // hw-10: такой способ обработки кликов считается deprecated, лучше исп-ть setOnClickListener
                 />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/leftBrace"
-                android:text="("
+                android:text="(" // hw-12: все текста желательно выносить в strings.xml
                 android:background="@drawable/button"
                 android:layout_width="0dp"
                 android:layout_weight="1"
