@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt(KEY_COUNT, count)
+        outState.putInt(KEY_COUNT, count) // не крашится ? вижу объявление переменной, и не вижу ее инициализацию. И ключ KEY_COUNT лучше в константу вынести
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
