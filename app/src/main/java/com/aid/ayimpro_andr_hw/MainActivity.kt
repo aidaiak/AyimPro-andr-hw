@@ -6,6 +6,9 @@ import android.os.PersistableBundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.content.PackageManagerCompat
+import androidx.core.content.PackageManagerCompat.LOG_TAG
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,6 +37,11 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt(KEY_COUNT, count)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        count = savedInstanceState.getInt("KEY_COUNT")
     }
 
     private fun onClick(v: View) {
