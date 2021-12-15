@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var txtCount: TextView
     private lateinit var btnCount: AppCompatButton
-    private lateinit var KEY_COUNT: String
     var count = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,12 +35,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt(KEY_COUNT, count)
+        outState.putInt(key, count)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        count = savedInstanceState.getInt("KEY_COUNT")
+        count = savedInstanceState.getInt(key)
     }
 
     private fun onClick(v: View) {
@@ -55,6 +54,10 @@ class MainActivity : AppCompatActivity() {
                 txtCount.text = count.toString()
             }
         }
+    }
+
+    companion object {
+        private var key = "KEY_COUNT"
     }
 
 }
