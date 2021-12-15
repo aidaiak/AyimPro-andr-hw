@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        private var key = "KEY_COUNT"
+        private const val key = "KEY_COUNT"
     }
 
 }
