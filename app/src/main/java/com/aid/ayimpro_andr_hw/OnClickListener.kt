@@ -1,5 +1,6 @@
 package com.aid.ayimpro_andr_hw
 
 interface OnClickListener {
-    fun setImage (image: Int)
+    fun setText1(enteredText: String)
+    fun setText2(enteredText: String)
 }

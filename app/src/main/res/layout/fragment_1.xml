@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/red">
+    android:background="@color/white">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/frg1_txt"
@@ -22,34 +22,22 @@
         android:gravity="center"
         android:padding="0dp"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/frg1_btn1"
-        android:layout_width= "match_parent"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/frg1_edit"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:padding="0dp"
-        android:text="BTN 1"
+        android:hint="Enter text"
         app:layout_constraintTop_toBottomOf="@id/frg1_txt"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/frg1_btn2"
+        android:id="@+id/frg1_btn"
         android:layout_width= "match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:padding="0dp"
-        android:text="BTN 2"
-        app:layout_constraintTop_toBottomOf="@id/frg1_btn1"/>
+        android:text="SEND TEXT"
+        app:layout_constraintTop_toBottomOf="@id/frg1_edit"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/frg1_btn3"
-        android:layout_width= "match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:padding="0dp"
-        android:text="BTN 3"
-        app:layout_constraintTop_toBottomOf="@id/frg1_btn2"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

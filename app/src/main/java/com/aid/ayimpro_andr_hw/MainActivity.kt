@@ -14,9 +14,13 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             .commit()
     }
 
-    override fun setImage(image: Int) {
-        val fragment2 = supportFragmentManager
-            .findFragmentById(R.id.frg2_cont) as? Fragment2
-        fragment2?.getImage(image)
+    override fun setText1(enteredText : String) {
+        val fragment1 = supportFragmentManager.findFragmentById(R.id.frg1_cont) as? Fragment1
+        fragment1?.setText2(enteredText)
+    }
+
+    override fun setText2(enteredText: String) {
+        val fragment2 = supportFragmentManager.findFragmentById(R.id.frg2_cont) as? Fragment2
+        fragment2?.setText1(enteredText)
     }
 }
