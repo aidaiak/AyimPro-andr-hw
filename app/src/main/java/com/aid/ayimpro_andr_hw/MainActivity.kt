@@ -2,95 +2,67 @@ package com.aid.ayimpro_andr_hw
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.widget.AppCompatTextView
+import com.aid.ayimpro_andr_hw.databinding.ActivityMainBinding
 import net.objecthunter.exp4j.ExpressionBuilder
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var input: AppCompatTextView
-    var lastNumeric: Boolean = false
-    var stateError: Boolean = false
-    var lastDot: Boolean = false
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        input = findViewById(R.id.txt_input)
-    }
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-    fun onDigit (v: View) {
-        if(stateError) {
-            //eсли нынешнее состояние показывает ошибку, то заменяем ошибку
-            input.text = (v as Button).text
-            stateError = false
-        } else {
-            //если другое, то цифра добавляется к input
-            input.append((v as Button).text)
-        }
-        lastNumeric = true
-    }
+        binding.apply {
+            btnZero.setOnClickListener{setTextFields("0")}
+            btnOne.setOnClickListener{setTextFields("1")}
+            btnTwo.setOnClickListener{setTextFields("2")}
+            btnThree.setOnClickListener{setTextFields("3")}
+            btnFour.setOnClickListener{setTextFields("4")}
+            btnFive.setOnClickListener{setTextFields("5")}
+            btnSix.setOnClickListener{setTextFields("6")}
+            btnSeven.setOnClickListener{setTextFields("7")}
+            btnEight.setOnClickListener{setTextFields("8")}
+            btnNine.setOnClickListener{setTextFields("9")}
 
-    fun onDecimalPoint (v: View) {
-        //юзер вводит decimal
-        if (lastNumeric && !stateError && !lastDot) {
-            input.append(".")
-            lastNumeric = false
-            lastDot = true
-        }
-    }
+            btnSubtract.setOnClickListener{setTextFields("-")}
+            btnMultiply.setOnClickListener{setTextFields("*")}
+            btnDivide.setOnClickListener{setTextFields("/")}
+            btnAdd.setOnClickListener{setTextFields("+")}
+            leftBrace.setOnClickListener{setTextFields("(")}
+            rightBrace.setOnClickListener{setTextFields(")")}
+            btnDecimalPoint.setOnClickListener{setTextFields(".")}
 
-    fun onLeftBrace (v: View) {
-        //юзер вводит (
-        if (!stateError && !lastDot) {
-            input.append("(")
-            lastNumeric = false
-        }
-    }
+            btnClear.setOnClickListener {
+                txtInput.text = ""
+            }
+            btnBackspace.setOnClickListener {
+                val str = txtInput.text.toString()
+                if (str.isNotEmpty()) {
+                    txtInput.text = str.substring(0, str.length - 1)
+                }
+            }
+            btnResult.setOnClickListener {
+                try {
+                    val ex = ExpressionBuilder(txtInput.text.toString()).build()
+                    val result = ex.evaluate()
 
-    fun onRightBrace (v: View) {
-        //юзер вводит )
-        if (lastNumeric && !stateError && !lastDot) {
-            input.append(")")
-            lastNumeric = true
-            lastDot = false
-        }
-    }
-
-    fun onOperator (v: View) {
-        //юзер вводит знак операции, и мы меняем textview
-        if (lastNumeric && !stateError) {
-            input.append((v as Button).text)
-            lastNumeric = false
-            lastDot = false
-        }
-    }
-
-    fun onClear (v: View) {
-        //юзер стирает данные
-        this.input.text = ""
-        lastNumeric = false
-        stateError = false
-        lastDot = false
-    }
-
-    fun onBackspace (v: View) {
-        input.text = input.text.substring(0, input.length()-1)
-    }
-
-    fun onResult (v: View) {
-        //выполнение операций
-        if (lastNumeric && !stateError) {
-            val txt = input.text.toString()
-            val expression = ExpressionBuilder(txt).build()
-            try {
-                val result = expression.evaluate()
-                input.text = result.toString()
-            } catch (ex: ArithmeticException) {
-                input.text = "Error"
-                stateError = true
-                lastNumeric = false
+                    val longRes = result.toLong()
+                    if (result == longRes.toDouble())
+                        txtInput.text = longRes.toString()
+                    else
+                        txtInput.text = result.toString()
+                } catch (e: ArithmeticException) {
+                    txtInput.text = "Error"
+                }
             }
         }
+    }
+    fun setTextFields(str: String) {
+        binding.txtInput.append(str)
     }
 }
