@@ -1,5 +1,6 @@
 package com.aid.ayimpro_andr_hw
 
+import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -21,8 +22,14 @@ class MainActivity : AppCompatActivity() {
 
         val list = mutableListOf<String>()
         for (i in 0..20) {
-            list.add("ITEM = $i")
+            list.add("ITEM - $i")
         }
+
+        val imgUrls = mutableListOf<String>()
+        imgUrls.add("https://images.unsplash.com/photo-1496065187959-7f07b8353c55?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80")
+        imgUrls.add("https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80")
+
         adapter.setData(list)
+        adapter.setImage(imgUrls)
     }
 }
