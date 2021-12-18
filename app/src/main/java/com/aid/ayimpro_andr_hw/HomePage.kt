@@ -11,7 +11,7 @@ class HomePage: Fragment(R.layout.home_page) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val toolbar = view.findViewById<Toolbar>(R.id.toolbar_home)
-        toolbar.inflateMenu(R.menu.about_menu)
+        toolbar.inflateMenu(R.menu.menu)
 
         toolbar.setOnMenuItemClickListener {
             when(it.itemId) {
