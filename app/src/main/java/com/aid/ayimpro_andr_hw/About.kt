@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 
-
+// классы фрагменты переименовать нужно -> AboutFragment, LoginFragment и тд
 class About : Fragment(R.layout.about_page) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -13,7 +13,7 @@ class About : Fragment(R.layout.about_page) {
 
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material)
         toolbar.setNavigationOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
+            requireActivity().supportFragmentManager.beginTransaction() // -> onBackPressed()
                 .replace(R.id.frg_cont, HomePage())
                 .addToBackStack(null)
                 .commit()
