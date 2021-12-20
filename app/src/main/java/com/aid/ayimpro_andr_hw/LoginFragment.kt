@@ -8,7 +8,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.Fragment
 
-class Login: Fragment(R.layout.login_page) {
+class LoginFragment: Fragment(R.layout.login_page) {
     private lateinit var listener: OnClickListener
 
     override fun onAttach(context: Context) {

@@ -9,13 +9,13 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         setContentView(R.layout.activity_main)
 
         supportFragmentManager.beginTransaction()
-            .add(R.id.frg_cont, Login())
+            .add(R.id.frg_cont, LoginFragment())
             .commit()
     }
 
     override fun goHomepage() {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.frg_cont, HomePage())
+            .replace(R.id.frg_cont, HomePageFragment())
             .commit()
     }
 }

@@ -5,7 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 
 
-class About : Fragment(R.layout.about_page) {
+class AboutFragment : Fragment(R.layout.about_page) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val toolbar: androidx.appcompat.widget.Toolbar = view.findViewById(R.id.toolbar_about)
@@ -14,7 +14,7 @@ class About : Fragment(R.layout.about_page) {
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material)
         toolbar.setNavigationOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.frg_cont, HomePage())
+                .replace(R.id.frg_cont, HomePageFragment())
                 .addToBackStack(null)
                 .commit()
         }
