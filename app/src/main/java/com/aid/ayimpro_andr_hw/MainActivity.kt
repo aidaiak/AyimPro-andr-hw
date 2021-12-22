@@ -1,7 +1,11 @@
 package com.aid.ayimpro_andr_hw
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+
 
 class MainActivity : AppCompatActivity(), OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,5 +28,20 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             .addToBackStack(null)
             .commit()
     }
+
+    override fun openAct(position: String) {
+        val intent = Intent("MainActivity2")
+        intent.putExtra("key2", position)
+
+        try {
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(this, "The is no activity to perform the action", Toast.LENGTH_SHORT).show()
+        }
+
+    }
 }
+
+
+
 
