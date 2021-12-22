@@ -13,10 +13,7 @@ class AboutFragment : Fragment(R.layout.about_page) {
 
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material)
         toolbar.setNavigationOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.frg_cont, HomePageFragment())
-                .addToBackStack(null)
-                .commit()
+            requireActivity().onBackPressed()
         }
     }
 }

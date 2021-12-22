@@ -18,4 +18,12 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             .replace(R.id.frg_cont, HomePageFragment())
             .commit()
     }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 1)
+            supportFragmentManager.popBackStack()
+        else
+
+            super.onBackPressed()
+    }
 }
