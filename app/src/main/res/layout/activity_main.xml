@@ -6,45 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/edit_account"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginBottom="20dp"
-        android:drawableStart="@drawable/ic_baseline_person_24"
-        android:drawableTint="#D500F9"
-        android:hint="Account"
-        android:imeOptions="actionNext"
-        android:inputType="textEmailAddress"
-        android:maxLines="1"
-        android:textColor="@color/black"
-        android:textSize="24sp"
+        android:hint="@string/acc_label"
         app:errorEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintVertical_chainStyle="packed"
+        app:startIconDrawable="@drawable/ic_baseline_person_24">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/edit_pwd"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginBottom="20dp"
-        android:drawableStart="@drawable/ic_baseline_lock_24"
-        android:drawableTint="#D500F9"
-        android:hint="Password"
-        android:imeOptions="actionDone"
-        android:inputType="textPassword"
-        android:maxLines="1"
-        android:textColor="@color/black"
-        android:textSize="24sp"
+        android:hint="@string/pwd_label"
         app:endIconMode="password_toggle"
         app:errorEnabled="true"
-        app:layout_constraintTop_toBottomOf="@+id/edit_account" />
+        app:layout_constraintTop_toBottomOf="@+id/input_layout_1"
+        app:startIconDrawable="@drawable/ic_baseline_lock_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="24sp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_sign"
@@ -54,7 +63,7 @@
         android:layout_marginRight="20dp"
         android:padding="0dp"
         android:text="SIGN IN"
-        app:layout_constraintTop_toBottomOf="@+id/edit_pwd" />
+        app:layout_constraintTop_toBottomOf="@+id/input_layout_2" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/forgot_password"
