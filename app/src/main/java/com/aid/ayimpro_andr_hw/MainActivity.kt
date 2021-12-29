@@ -14,9 +14,7 @@ import java.lang.Exception
 
 
 class MainActivity : AppCompatActivity() {
-    var drawer: DrawerLayout? = null
-    var navDrawer: NavigationView? = null
-    var drawerToggle: ActionBarDrawerToggle? = null
+    lateinit var drawerToggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,53 +23,44 @@ class MainActivity : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        drawer = findViewById(R.id.drawer_layout)
-        navDrawer = findViewById(R.id.nav_view)
-        setupDrawerContent(navDrawer)
-
+        val drawer: DrawerLayout = findViewById(R.id.drawer_layout)
+        val navDrawer: NavigationView = findViewById(R.id.nav_view)
         drawerToggle =
             ActionBarDrawerToggle(this, drawer, R.string.nav_open, R.string.nav_close)
+        drawer.addDrawerListener(drawerToggle)
+        drawerToggle.syncState()
 
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                drawer!!.openDrawer(GravityCompat.START)
-                return true
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        navDrawer.setNavigationItemSelectedListener{
+
+            when (it.itemId) {
+                R.id.nav_account -> supportFragmentManager.beginTransaction()
+                    .replace(R.id.frg_cont, AccountFragment())
+                    .commit()
+
+                R.id.nav_company -> supportFragmentManager.beginTransaction()
+                    .replace(R.id.frg_cont, CompanyFragment())
+                    .commit()
+
+                R.id.nav_settings -> supportFragmentManager.beginTransaction()
+                    .replace(R.id.frg_cont, SettingsFragment())
+                    .commit()
+
+                R.id.nav_logout -> supportFragmentManager.beginTransaction()
+                    .replace(R.id.frg_cont, LogoutFragment())
+                    .commit()
             }
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    private fun setupDrawerContent(navDrawer: NavigationView) {
-        navDrawer.setNavigationItemSelectedListener { menuItem ->
-            selectDrawerItem(menuItem)
+            drawerToggle.syncState()
             true
         }
     }
 
-    private fun selectDrawerItem(menuItem: MenuItem) {
-        var fragment: Fragment? = null
-        val fragmentClass: Class<*> =
-            when (menuItem.itemId) {
-                R.id.nav_account -> AccountFragment::class.java
-                R.id.nav_company -> CompanyFragment::class.java
-                R.id.nav_settings -> SettingsFragment::class.java
-                R.id.nav_logout -> LogoutFragment::class.java
-                else -> AccountFragment::class.java
-            }
-        try {
-            fragment = fragmentClass.newInstance() as Fragment
-        } catch (e: Exception) {
-            e.printStackTrace()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (drawerToggle.onOptionsItemSelected(item)) {
+            return true
         }
-        val fragmentManager: FragmentManager = supportFragmentManager
-        fragmentManager.beginTransaction().replace(R.id.frg_cont, fragment).commit()
-
-        menuItem.setChecked(true)
-        setTitle(menuItem.getTitle())
-        drawer!!.closeDrawers()
+        return super.onOptionsItemSelected(item)
     }
 }
