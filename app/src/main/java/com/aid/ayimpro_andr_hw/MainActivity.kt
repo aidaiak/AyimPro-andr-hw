@@ -18,9 +18,9 @@ class MainActivity : AppCompatActivity() {
         val btn = findViewById<AppCompatButton>(R.id.btn)
 
         btn.setOnClickListener {
-            val eTxt = edit.text.toString().trim()
-            val i = if (eTxt.isEmpty()) 0 else eTxt.split("\\s+".toRegex()).size
-            txt.text = i.toString()
+            val eTxt = edit.text.toString()
+            val count = eTxt.split("[a-zA-Z]*[oO][a-zA-Z]*".toRegex()).size - 1
+            txt.text = count.toString()
         }
     }
 }
