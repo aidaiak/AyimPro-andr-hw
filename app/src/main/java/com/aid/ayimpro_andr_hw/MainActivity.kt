@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
         val btn = findViewById<AppCompatButton>(R.id.btn)
 
         btn.setOnClickListener {
-            val eTxt = edit.text.toString()
-            val count = eTxt.split("[ая]\\b".toRegex()).size - 1
+            val enteredTxt = edit.text.toString()
+            val count = enteredTxt.split("[ая]\\b".toRegex()).size - 1
             txt.text = count.toString()
         }
     }
