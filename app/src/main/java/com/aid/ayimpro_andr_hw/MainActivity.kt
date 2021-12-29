@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         btn.setOnClickListener {
             val eTxt = edit.text.toString()
-            val count = eTxt.split("[a-zA-Z]*[oO][a-zA-Z]*".toRegex()).size - 1
+            val count = eTxt.split("[ая]\\b".toRegex()).size - 1
             txt.text = count.toString()
         }
     }
