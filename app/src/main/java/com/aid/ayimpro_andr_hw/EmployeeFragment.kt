@@ -15,7 +15,7 @@ class EmployeeFragment : Fragment(R.layout.employee) {
         val txtCompany = view.findViewById<AppCompatTextView>(R.id.company)
         val txtSalary = view.findViewById<AppCompatTextView>(R.id.salary)
 
-        val e = dbInstance.employeeDao().getById(1L)
+        val e = dbInstance.employeeDao().getById(2L)
         txtName.text = e.name
         txtCompany.text = e.company
         txtSalary.text = e.salary.toString()
