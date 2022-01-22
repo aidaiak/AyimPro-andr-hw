@@ -41,4 +41,24 @@
         android:textSize="24sp"
         app:layout_constraintTop_toBottomOf="@id/company"/>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="0dp"
+        android:text="EDIT"
+        app:layout_constraintTop_toBottomOf="@id/salary" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="0dp"
+        android:text="DELETE"
+        app:layout_constraintTop_toBottomOf="@id/btn_edit" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

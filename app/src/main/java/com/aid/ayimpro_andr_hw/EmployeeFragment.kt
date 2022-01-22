@@ -1,23 +1,47 @@
 package com.aid.ayimpro_andr_hw
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
+import com.aid.ayimpro_andr_hw.databinding.EmployeeBinding
 
 class EmployeeFragment : Fragment(R.layout.employee) {
+    private var _binding: EmployeeBinding? = null
+    private val binding get() = _binding!!
     private val dbInstance get() = Injector.database
+    private lateinit var listener: OnClick
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        listener = context as OnClick
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = EmployeeBinding.bind(view)
 
-        val txtName = view.findViewById<AppCompatTextView>(R.id.name)
-        val txtCompany = view.findViewById<AppCompatTextView>(R.id.company)
-        val txtSalary = view.findViewById<AppCompatTextView>(R.id.salary)
+        binding.apply {
+            val e = dbInstance.employeeDao().getById(1L)
+            name.text = e.name
+            company.text = e.company
+            salary.text = e.salary.toString()
 
-        val e = dbInstance.employeeDao().getById(2L)
-        txtName.text = e.name
-        txtCompany.text = e.company
-        txtSalary.text = e.salary.toString()
+            btnDelete.setOnClickListener {
+                dbInstance.employeeDao().delete(e)
+                listener.goInputFragment()
+            }
+
+            btnEdit.setOnClickListener {
+                dbInstance.employeeDao().update(e)
+                listener.goInputFragment()
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

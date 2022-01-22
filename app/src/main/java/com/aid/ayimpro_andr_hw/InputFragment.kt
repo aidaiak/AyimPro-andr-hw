@@ -1,34 +1,42 @@
 package com.aid.ayimpro_andr_hw
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.Fragment
 import com.aid.ayimpro_andr_hw.database.Employee
+import com.aid.ayimpro_andr_hw.databinding.InputBinding
 
 class InputFragment : Fragment(R.layout.input) {
+    private var _binding: InputBinding? = null
+    private val binding get() = _binding!!
     private val dbInstance get() = Injector.database
+    private lateinit var listener: OnClick
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        listener = context as OnClick
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = InputBinding.bind(view)
 
-        val eName = view.findViewById<AppCompatEditText>(R.id.edit_name)
-        val eCompany = view.findViewById<AppCompatEditText>(R.id.edit_company)
-        val eSalary = view.findViewById<AppCompatEditText>(R.id.edit_salary)
-        val btn = view.findViewById<AppCompatButton>(R.id.btn_save)
-
-        btn.setOnClickListener {
-            val e = Employee(
-                name = eName.text.toString(),
-                company = eCompany.text.toString(),
-                salary = eSalary.text.toString().toInt()
-            )
-            dbInstance.employeeDao().insert(e)
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.frg_cont, EmployeeFragment())
-                .commit()
+        binding.apply {
+            btnSave.setOnClickListener {
+                val e = Employee(
+                    name = editName.text.toString(),
+                    company = editCompany.text.toString(),
+                    salary = editSalary.text.toString().toInt()
+                )
+                dbInstance.employeeDao().insert(e)
+                listener.goEmployeeFragment()
+            }
         }
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
