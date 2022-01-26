@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatTextView
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var txt: AppCompatTextView
@@ -18,9 +19,23 @@ class MainActivity : AppCompatActivity() {
         val btn = findViewById<AppCompatButton>(R.id.btn)
 
         btn.setOnClickListener {
-            val enteredTxt = edit.text.toString()
-            val count = enteredTxt.split("[ая]\\b".toRegex()).size - 1
-            txt.text = count.toString()
+            val text = edit.text.toString().trim()
+            val listOfWords = text.split("\\s+".toRegex())
+            var maxA = 0
+            var word = ""
+
+            listOfWords.forEach {
+                if (it.contains('a')) {
+                    val numOfA = it.count{c -> c == 'a'}
+                    if (maxA < numOfA)
+                    {
+                        maxA = numOfA
+                        word = it
+                    }
+                }
+            }
+
+            txt.text = "The word with max 'A's: $word & number of 'A's = $maxA\n"
         }
     }
 }
