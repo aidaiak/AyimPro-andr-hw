@@ -17,7 +17,12 @@ class MainActivity : AppCompatActivity(), OnClick {
             .commit()
     }
 
-    override fun goEmployeeFragment() {
+    override fun goEmployeeFragment(adapterPosition: String) {
+        val employeeFragment = EmployeeFragment()
+        val bundle = Bundle()
+        bundle.putString("key", adapterPosition)
+        employeeFragment.arguments = bundle
+
         supportFragmentManager.beginTransaction()
             .replace(R.id.frg_cont, EmployeeFragment())
             .commit()

@@ -38,6 +38,9 @@ class EmployeeFragment : Fragment(R.layout.employee) {
                 listener.goInputFragment()
             }
         }
+
+        val text = arguments?.getString("key") ?: "defaultText"
+        binding.name.text = text
     }
 
     override fun onDestroyView() {
