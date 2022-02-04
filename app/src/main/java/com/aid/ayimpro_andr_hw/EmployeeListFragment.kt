@@ -12,6 +12,7 @@ import com.aid.ayimpro_andr_hw.databinding.EmployeeListBinding
 class EmployeeListFragment: Fragment(R.layout.employee_list) {
     private var _binding: EmployeeListBinding? = null
     private val binding get() = _binding!!
+    private val dbInstance get() = Injector.database
     private lateinit var listener: OnClick
 
     override fun onAttach(context: Context) {
@@ -23,20 +24,24 @@ class EmployeeListFragment: Fragment(R.layout.employee_list) {
         super.onViewCreated(view, savedInstanceState)
         _binding = EmployeeListBinding.bind(view)
 
-        binding.recycler
-        val layoutManager = LinearLayoutManager(requireContext())
-        val adapter = Adapter{
-            listener.goEmployeeFragment("ITEM - $it")
-        }
+        binding.apply {
+            val adapter = Adapter {
+                listener.goEmployeeFragment(it.id!!)
+            }
+            recycler.adapter = adapter
+            recycler.layoutManager = LinearLayoutManager(requireContext())
+            recycler.addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))
 
-        binding.recycler.layoutManager = layoutManager
-        binding.recycler.adapter = adapter
-        binding.recycler.addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))
+            val list = dbInstance.employeeDao().getAll()
+            adapter.setData(list)
 
-        val list = mutableListOf<String>()
-        for (i in 0..20) {
-            list.add("ITEM - $i")
+            addBtn.setOnClickListener {
+                listener.goInputFragment()
+            }
         }
-        adapter.setData(list)
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

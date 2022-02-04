@@ -23,28 +23,20 @@ class EmployeeFragment : Fragment(R.layout.employee) {
         _binding = EmployeeBinding.bind(view)
 
         binding.apply {
+            val id = arguments?.getLong("ID") ?: -1L
             val e = dbInstance.employeeDao().getById(1L)
+
             name.text = e.name
             company.text = e.company
             salary.text = e.salary.toString()
 
             btnDelete.setOnClickListener {
-                dbInstance.employeeDao().delete(e)
-                listener.goInputFragment()
+                listener.deleteEmployee(e.id!!)
             }
 
             btnEdit.setOnClickListener {
-                dbInstance.employeeDao().update(e)
-                listener.goInputFragment()
+                listener.editEmployee(e.id!!)
             }
         }
-
-        val text = arguments?.getString("key") ?: "defaultText"
-        binding.name.text = text
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

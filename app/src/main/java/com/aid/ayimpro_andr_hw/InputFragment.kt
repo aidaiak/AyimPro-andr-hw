@@ -30,7 +30,7 @@ class InputFragment : Fragment(R.layout.input) {
                     salary = editSalary.text.toString().toInt()
                 )
                 dbInstance.employeeDao().insert(e)
-                listener.goEmployeeFragment()
+                listener.goEmployeeList()
             }
         }
     }

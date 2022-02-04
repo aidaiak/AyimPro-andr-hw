@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#EFFBFD"
+    android:orientation="vertical"
+    android:layout_marginRight="50dp"
+    android:layout_marginLeft="50dp"
+    android:layout_marginTop="150dp"
+    android:padding="50dp"
+    android:gravity="center">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edit_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="29sp"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:hint="Name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.35"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edit_company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="29sp"
+        android:textColor="@color/black"
+        android:hint="Company"
+        app:layout_constraintTop_toBottomOf="@id/edit_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edit_salary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:inputType="numberDecimal"
+        android:textColor="@color/black"
+        android:hint="Salary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_company"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="save and go"
+        app:layout_constraintTop_toBottomOf="@id/edit_salary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
