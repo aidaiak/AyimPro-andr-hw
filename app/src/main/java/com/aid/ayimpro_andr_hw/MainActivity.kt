@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity(), OnClick {
 
     override fun goEmployeeList() {
         supportFragmentManager.beginTransaction()
-            .add(R.id.frg_cont, EmployeeListFragment())
+            .replace(R.id.frg_cont, EmployeeListFragment())
             .commit()
     }
 

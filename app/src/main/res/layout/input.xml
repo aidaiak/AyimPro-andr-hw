@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edit_name"
+        android:id="@+id/input_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -22,7 +22,7 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edit_company"
+        android:id="@+id/input_company"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -31,10 +31,10 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:imeOptions="actionNext"
-        app:layout_constraintTop_toBottomOf="@id/edit_name"/>
+        app:layout_constraintTop_toBottomOf="@id/input_name"/>
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edit_salary"
+        android:id="@+id/input_salary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -43,7 +43,7 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:imeOptions="actionDone"
-        app:layout_constraintTop_toBottomOf="@id/edit_company"/>
+        app:layout_constraintTop_toBottomOf="@id/input_company"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_save"
@@ -53,6 +53,6 @@
         android:layout_marginRight="20dp"
         android:padding="0dp"
         android:text="SAVE &amp; GO"
-        app:layout_constraintTop_toBottomOf="@id/edit_salary" />
+        app:layout_constraintTop_toBottomOf="@id/input_salary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

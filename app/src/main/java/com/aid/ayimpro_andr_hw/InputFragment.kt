@@ -25,9 +25,9 @@ class InputFragment : Fragment(R.layout.input) {
         binding.apply {
             btnSave.setOnClickListener {
                 val e = Employee(
-                    name = editName.text.toString(),
-                    company = editCompany.text.toString(),
-                    salary = editSalary.text.toString().toInt()
+                    name = inputName.text.toString(),
+                    company = inputCompany.text.toString(),
+                    salary = inputSalary.text.toString().toInt()
                 )
                 dbInstance.employeeDao().insert(e)
                 listener.goEmployeeList()
