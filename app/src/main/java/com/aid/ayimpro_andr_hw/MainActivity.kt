@@ -18,9 +18,11 @@ class MainActivity : AppCompatActivity() {
         val btn = findViewById<AppCompatButton>(R.id.btn)
 
         btn.setOnClickListener {
-            val enteredTxt = edit.text.toString()
-            val count = enteredTxt.split("[ая]\\b".toRegex()).size - 1
-            txt.text = count.toString()
+            val eTxt = edit.text.toString().trim()
+            val count = eTxt.split("".toRegex()).size
+
+
+            txt.text = "The word with max 'A's: $word & number of 'A's = $maxA\n"
         }
     }
 }
