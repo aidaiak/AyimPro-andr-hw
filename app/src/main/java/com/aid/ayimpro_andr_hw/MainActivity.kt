@@ -19,10 +19,10 @@ class MainActivity : AppCompatActivity() {
 
         btn.setOnClickListener {
             val eTxt = edit.text.toString().trim()
-            val count = eTxt.split("".toRegex()).size
+            val count = eTxt.split("\b[a-zA-Z]{3}\b".toRegex()).count()
 
 
-            txt.text = "The word with max 'A's: $word & number of 'A's = $maxA\n"
+            txt.text = count.toString()
         }
     }
 }
