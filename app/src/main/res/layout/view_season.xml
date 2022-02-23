@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:layout_width="match_parent"
+    tools:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:padding="16dp"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="100dp"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnAction"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAction"
+        android:layout_width="44dp"
+        android:layout_height="wrap_content"
+        android:text=">"
+        app:layout_constraintStart_toEndOf="@id/editDate"
+        app:layout_constraintEnd_toStartOf="@id/textSeason"
+        app:layout_constraintTop_toTopOf="@id/editDate"
+        app:layout_constraintBottom_toBottomOf="@id/editDate"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textSeason"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:textSize="18sp"
+        android:text=""
+        app:layout_constraintStart_toEndOf="@id/btnAction"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/editDate"
+        app:layout_constraintBottom_toBottomOf="@id/editDate" />
+
+</merge>
