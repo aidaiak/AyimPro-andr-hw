@@ -9,12 +9,12 @@ import retrofit2.http.Path
 
 interface GithubApi {
 
-    @GET("/repositories")
+    @GET("repositories")
     fun getRepositories(): Observable<List<Item>>
 
-    @GET("users/tuleubekov/repos")
+    @GET("users/aidaiak/repos")
     fun getUserRepos(): Observable<ResponseBody>
 
-    @GET("/search/repositories?q=language:kotlin&sort=stars&order=desc&per_page=50")
+    @GET("search/repositories?q=language:kotlin&sort=stars&order=desc&per_page=50")
     fun searchRepositories(): Observable<RepoResult>
 }
