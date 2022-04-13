@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.aid.ayimpro_andr_hw.Adapter
 import com.aid.ayimpro_andr_hw.R
 import com.aid.ayimpro_andr_hw.ui.Navigate
 import com.aid.ayimpro_andr_hw.ui.details.CharacterDetailsFragment
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aid.ayimpro_andr_hw.databinding.CharactersListBinding
 import com.aid.ayimpro_andr_hw.ui.Events
-import java.lang.reflect.Array.newInstance
 
 class CharacterListFragment : Fragment(R.layout.characters_list) {
     private var _binding: CharactersListBinding? = null

@@ -1,4 +1,4 @@
-package com.aid.ayimpro_andr_hw
+package com.aid.ayimpro_andr_hw.ui.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,8 +9,8 @@ import com.bumptech.glide.Glide
 
 
 class Adapter(
-    private val onItemClicked: (Long) -> Unit
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private val onItemClicked: (id:Long) -> Unit
+) : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
     private var list: List<CharacterEntity> = listOf()
 
@@ -52,3 +52,4 @@ class Adapter(
         }
     }
 }
+
